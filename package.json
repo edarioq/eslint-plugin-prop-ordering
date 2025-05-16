@@ -1,0 +1,42 @@
+{
+  "name": "@edarioq/eslint-plugin-prop-ordering",
+  "version": "1.0.0",
+  "description": "ESLint plugin for consistent property ordering in TypeScript interfaces and React components",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "react",
+    "typescript",
+    "ordering",
+    "props",
+    "interfaces",
+    "components"
+  ],
+  "author": "Edgar Quintero <edarioq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edarioq/eslint-plugin-prop-ordering.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edarioq/eslint-plugin-prop-ordering/issues"
+  },
+  "homepage": "https://github.com/edarioq/eslint-plugin-prop-ordering#readme",
+  "peerDependencies": {
+    "eslint": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "mocha": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

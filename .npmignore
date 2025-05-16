@@ -1,0 +1,7 @@
+tests/
+.github/
+coverage/
+.vscode/
+.eslintrc.js
+.gitignore
+*.log
