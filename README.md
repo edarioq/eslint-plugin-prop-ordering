@@ -15,18 +15,18 @@ interface Props {
   effectiveSelectedKeys: "all" | Set<Key>;
   page: number;
   pages: number;
+  setPage: Dispatch<SetStateAction<number>>;
   onNextPage: () => void;
   onPreviousPage: () => void;
-  setPage: Dispatch<SetStateAction<number>>;
 }
 
 export function Pagination({
   effectiveSelectedKeys,
   page,
   pages,
+  setPage,
   onNextPage,
   onPreviousPage,
-  setPage,
 }: Props) {
   return (
     <div>
@@ -40,9 +40,9 @@ export function Pagination({
   page={page}
   pages={pages}
   totalItems={10}
+  setPage={setPage}
   onNextPage={onNextPage}
   onPreviousPage={onPreviousPage}
-  onSetPage={setPage}
 />
 ```
 
@@ -71,22 +71,6 @@ export function Pagination({
         "noSortAlphabetically": false,
         "reservedFirst": true,
         "reservedPropsNames": ["id", "key", "ref", "name", "type"]
-      }
-    ],
-    "@edarioq/prop-ordering/sort-jsx-props": [
-      "warn",
-      {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "noSortAlphabetically": false,
-        "reservedFirst": true,
-        "callbackPatterns": [
-          "^on[A-Z]",
-          "^set[A-Z]",
-          "Callback$",
-          "Handler$",
-          "^handle[A-Z]"
-        ]
       }
     ],
   }
