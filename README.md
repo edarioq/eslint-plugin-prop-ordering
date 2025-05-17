@@ -15,18 +15,18 @@ interface Props {
   effectiveSelectedKeys: "all" | Set<Key>;
   page: number;
   pages: number;
-  setPage: Dispatch<SetStateAction<number>>;
   onNextPage: () => void;
   onPreviousPage: () => void;
+  setPage: Dispatch<SetStateAction<number>>;
 }
 
 export function Pagination({
   effectiveSelectedKeys,
   page,
   pages,
-  setPage,
   onNextPage,
   onPreviousPage,
+  setPage,
 }: Props) {
   return (
     <div>
@@ -34,8 +34,17 @@ export function Pagination({
     </div>
   );
 }
-```
 
+<Pagination
+  effectiveSelectedKeys={effectiveSelectedKeys}
+  page={page}
+  pages={pages}
+  totalItems={10}
+  onNextPage={onNextPage}
+  onPreviousPage={onPreviousPage}
+  onSetPage={setPage}
+/>
+```
 
 ## Example config in an .eslintrc.json file
 
@@ -43,27 +52,43 @@ export function Pagination({
 {
   // other stuff
 
-   "rules": {
-      "@edarioq/prop-ordering/sort-type-properties": [
-        "warn",
-        {
-          "callbacksLast": true,
-          "shorthandFirst": true,
-          "noSortAlphabetically": false,
-          "reservedFirst": true,
-          "reservedPropsNames": ["id", "key", "ref", "name", "type"]
-        }
-      ],
-      "@edarioq/prop-ordering/sort-component-props": [
-        "warn",
-        {
-          "callbacksLast": true,
-          "shorthandFirst": true,
-          "noSortAlphabetically": false,
-          "reservedFirst": true,
-          "reservedPropsNames": ["id", "key", "ref", "name", "type"]
-        }
-      ],
-   }
+  "rules": {
+    "@edarioq/prop-ordering/sort-type-properties": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true,
+        "reservedPropsNames": ["id", "key", "ref", "name", "type"]
+      }
+    ],
+    "@edarioq/prop-ordering/sort-component-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true,
+        "reservedPropsNames": ["id", "key", "ref", "name", "type"]
+      }
+    ],
+    "@edarioq/prop-ordering/sort-jsx-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true,
+        "callbackPatterns": [
+          "^on[A-Z]",
+          "^set[A-Z]",
+          "Callback$",
+          "Handler$",
+          "^handle[A-Z]"
+        ]
+      }
+    ],
+  }
 }
 ```
