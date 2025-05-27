@@ -1,6 +1,6 @@
 {
   "name": "@edarioq/eslint-plugin-prop-ordering",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ESLint plugin for consistent property ordering in TypeScript interfaces and React components",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/edarioq/eslint-plugin-prop-ordering.git"
+    "url": "git+https://github.com/edarioq/eslint-plugin-prop-ordering.git"
   },
   "bugs": {
     "url": "https://github.com/edarioq/eslint-plugin-prop-ordering/issues"

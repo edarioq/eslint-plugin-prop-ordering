@@ -17,6 +17,10 @@ ruleTester.run("sort-component-props", rule, {
     `function Button({ id, variant, disabled = false, onClick }) {
       return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
     }`,
+    // Test more comprehensive sorting
+    `function DataTable({ id, className, columns, data, emptyMessage = "No data", loading = false, onPageChange, onRowClick }) {
+      return <div>{data.length}</div>;
+    }`,
   ],
   invalid: [
     {
@@ -31,6 +35,21 @@ ruleTester.run("sort-component-props", rule, {
       ],
       output: `function Button({ id, variant, disabled = false, onClick }) {
         return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
+      }`,
+    },
+    // Test comprehensive sorting
+    {
+      code: `function DataTable({ onRowClick, loading = false, id, data, onPageChange, columns, className, emptyMessage = "No data" }) {
+        return <div>{data.length}</div>;
+      }`,
+      errors: [
+        {
+          message:
+            "React component props should be sorted according to the defined order.",
+        },
+      ],
+      output: `function DataTable({ id, className, columns, data, emptyMessage = "No data", loading = false, onPageChange, onRowClick }) {
+        return <div>{data.length}</div>;
       }`,
     },
   ],

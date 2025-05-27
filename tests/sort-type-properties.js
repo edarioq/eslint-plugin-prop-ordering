@@ -17,6 +17,17 @@ ruleTester.run("sort-type-properties", rule, {
       disabled?: boolean;
       onClick: () => void;
     }`,
+    // Test more comprehensive sorting
+    `interface DataTableProps {
+      id: string;
+      columns: string[];
+      data: any[];
+      className?: string;
+      emptyMessage?: string;
+      loading?: boolean;
+      onRowClick: () => void;
+      onPageChange?: () => void;
+    }`,
   ],
   invalid: [
     {
@@ -37,6 +48,35 @@ ruleTester.run("sort-type-properties", rule, {
         variant: string;
         disabled?: boolean;
         onClick: () => void;
+      }`,
+    },
+    // Test comprehensive sorting
+    {
+      code: `interface DataTableProps {
+        onRowClick: () => void;
+        loading?: boolean;
+        id: string;
+        data: any[];
+        onPageChange?: () => void;
+        columns: string[];
+        className?: string;
+        emptyMessage?: string;
+      }`,
+      errors: [
+        {
+          message:
+            "Interface properties should be sorted according to the defined order.",
+        },
+      ],
+      output: `interface DataTableProps {
+        id: string;
+        columns: string[];
+        data: any[];
+        className?: string;
+        emptyMessage?: string;
+        loading?: boolean;
+        onRowClick: () => void;
+        onPageChange?: () => void;
       }`,
     },
   ],
