@@ -1,4 +1,4 @@
-const rule = require("../lib/rules/sort-type-properties");
+const rule = require("../lib/rules/sort-component-props");
 const RuleTester = require("eslint").RuleTester;
 
 const ruleTester = new RuleTester({
@@ -6,37 +6,31 @@ const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 });
 
-ruleTester.run("sort-type-properties", rule, {
+ruleTester.run("sort-component-props", rule, {
   valid: [
-    `interface ButtonProps {
-      id: string;
-      disabled?: boolean;
-      variant: string;
-      onClick: () => void;
+    `function Button({ id, variant, disabled = false, onClick }) {
+      return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
     }`,
   ],
   invalid: [
     {
-      code: `interface ButtonProps {
-        onClick: () => void;
-        id: string;
-        disabled?: boolean;
-        variant: string;
+      code: `function Button({ onClick, id, disabled = false, variant }) {
+        return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
       }`,
       errors: [
         {
           message:
-            "Interface properties should be sorted according to the defined order.",
+            "React component props should be sorted according to the defined order.",
         },
       ],
-      output: `interface ButtonProps {
-        id: string;
-        disabled?: boolean;
-        variant: string;
-        onClick: () => void;
+      output: `function Button({ id, variant, disabled = false, onClick }) {
+        return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
       }`,
     },
   ],

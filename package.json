@@ -1,6 +1,6 @@
 {
   "name": "@edarioq/eslint-plugin-prop-ordering",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "ESLint plugin for consistent property ordering in TypeScript interfaces and React components",
   "main": "index.js",
   "scripts": {

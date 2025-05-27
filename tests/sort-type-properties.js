@@ -13,8 +13,8 @@ ruleTester.run("sort-type-properties", rule, {
   valid: [
     `interface ButtonProps {
       id: string;
-      disabled?: boolean;
       variant: string;
+      disabled?: boolean;
       onClick: () => void;
     }`,
   ],
@@ -34,8 +34,8 @@ ruleTester.run("sort-type-properties", rule, {
       ],
       output: `interface ButtonProps {
         id: string;
-        disabled?: boolean;
         variant: string;
+        disabled?: boolean;
         onClick: () => void;
       }`,
     },
