@@ -11,22 +11,23 @@ const ruleTester = new RuleTester({
 
 ruleTester.run("sort-type-properties", rule, {
   valid: [
+    // Reserved first, alphabetical, callbacks last (ignoring optional)
     `interface ButtonProps {
       id: string;
-      variant: string;
       disabled?: boolean;
+      variant: string;
       onClick: () => void;
     }`,
     // Test more comprehensive sorting
     `interface DataTableProps {
       id: string;
+      className?: string;
       columns: string[];
       data: any[];
-      className?: string;
       emptyMessage?: string;
       loading?: boolean;
-      onRowClick: () => void;
       onPageChange?: () => void;
+      onRowClick: () => void;
     }`,
   ],
   invalid: [
@@ -40,13 +41,13 @@ ruleTester.run("sort-type-properties", rule, {
       errors: [
         {
           message:
-            "Interface properties should be sorted according to the defined order.",
+            "Interface properties should be sorted: reserved first, alphabetical, callbacks last.",
         },
       ],
       output: `interface ButtonProps {
         id: string;
-        variant: string;
         disabled?: boolean;
+        variant: string;
         onClick: () => void;
       }`,
     },
@@ -65,18 +66,18 @@ ruleTester.run("sort-type-properties", rule, {
       errors: [
         {
           message:
-            "Interface properties should be sorted according to the defined order.",
+            "Interface properties should be sorted: reserved first, alphabetical, callbacks last.",
         },
       ],
       output: `interface DataTableProps {
         id: string;
+        className?: string;
         columns: string[];
         data: any[];
-        className?: string;
         emptyMessage?: string;
         loading?: boolean;
-        onRowClick: () => void;
         onPageChange?: () => void;
+        onRowClick: () => void;
       }`,
     },
   ],

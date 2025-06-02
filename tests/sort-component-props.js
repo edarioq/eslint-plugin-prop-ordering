@@ -14,7 +14,8 @@ const ruleTester = new RuleTester({
 
 ruleTester.run("sort-component-props", rule, {
   valid: [
-    `function Button({ id, variant, disabled = false, onClick }) {
+    // Reserved first, alphabetical, callbacks last
+    `function Button({ id, disabled = false, variant, onClick }) {
       return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
     }`,
     // Test more comprehensive sorting
@@ -30,10 +31,10 @@ ruleTester.run("sort-component-props", rule, {
       errors: [
         {
           message:
-            "React component props should be sorted according to the defined order.",
+            "React component props should be sorted: reserved first, alphabetical, callbacks last.",
         },
       ],
-      output: `function Button({ id, variant, disabled = false, onClick }) {
+      output: `function Button({ id, disabled = false, variant, onClick }) {
         return <button id={id} disabled={disabled} onClick={onClick}>{variant}</button>;
       }`,
     },
@@ -45,7 +46,7 @@ ruleTester.run("sort-component-props", rule, {
       errors: [
         {
           message:
-            "React component props should be sorted according to the defined order.",
+            "React component props should be sorted: reserved first, alphabetical, callbacks last.",
         },
       ],
       output: `function DataTable({ id, className, columns, data, emptyMessage = "No data", loading = false, onPageChange, onRowClick }) {
