@@ -57,10 +57,10 @@ export function Pagination({
       "warn",
       {
         "callbacksLast": true,
-        "shorthandFirst": true,
         "noSortAlphabetically": false,
         "reservedFirst": true,
-        "reservedPropsNames": ["id", "key", "ref", "name", "type"]
+        "reservedPropsNames": ["id", "key", "ref", "name", "type"],
+        "callbackPrefixes": ["on", "set", "update", "handle", "render"]
       }
     ],
     "@edarioq/prop-ordering/sort-component-props": [
@@ -69,9 +69,10 @@ export function Pagination({
         "callbacksLast": true,
         "noSortAlphabetically": false,
         "reservedFirst": true,
-        "reservedPropsNames": ["id", "key", "ref", "name", "type"]
+        "reservedPropsNames": ["id", "key", "ref", "name", "type"],
+        "callbackPrefixes": ["on", "set", "update", "handle", "render"]
       }
-    ]
+    ],
   }
 }
 ```
