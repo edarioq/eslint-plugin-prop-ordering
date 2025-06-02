@@ -67,12 +67,11 @@ export function Pagination({
       "warn",
       {
         "callbacksLast": true,
-        "shorthandFirst": true,
         "noSortAlphabetically": false,
         "reservedFirst": true,
         "reservedPropsNames": ["id", "key", "ref", "name", "type"]
       }
-    ],
+    ]
   }
 }
 ```
